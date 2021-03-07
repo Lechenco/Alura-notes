@@ -1,14 +1,12 @@
 import {Cliente} from "./Cliente.js";
 import {ContaCorrente} from "./ContaCorrente.js";
 import { ContaPoupanca } from "./ContaPoupanca.js";
-import {Conta} from './Conta.js'
 
 const cliente1 = new Cliente( "Jorge", 12131232134);
 
-const cc1 = new ContaCorrente(0, cliente1, 10001);
-cc1.agencia = 317;
-cc1.cliente  = cliente1;
+const cc1 = new ContaCorrente(10001, cliente1);
 cc1.depositar(55.00);
+cc1.sacar(5)
 
 console.log(cc1)
 
