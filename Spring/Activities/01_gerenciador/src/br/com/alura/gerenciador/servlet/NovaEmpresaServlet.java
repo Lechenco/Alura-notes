@@ -23,16 +23,21 @@ public class NovaEmpresaServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("Cadastrando nova empresa");
 		
-		String nomeEmpresa = request.getParameter("nome");
+		String nomeEmpresa = req.getParameter("nome");
 		
-		PrintWriter out = response.getWriter();
+		Empresa empresa = new Empresa();
+		empresa.setNome(nomeEmpresa);
+		
+		Banco banco = new Banco();
+		banco.adiciona(empresa);
+		
+		PrintWriter out = resp.getWriter();
 		out.println("<html><body>Empresa "+ nomeEmpresa +" cadastrada com sucesso!</body></html>");
 	}
 
